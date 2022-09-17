@@ -799,11 +799,11 @@ btn5.onclick = () => {
   border-style: none;
   height: 50px !important;
   background-color: black;
-  color: green;
+  color: white;
   font-family: "Open Sans";
 }
 #console::placeholder {
-  color: green;
+  color: white;
   font-family: "Open Sans";
 }
 #goback {
