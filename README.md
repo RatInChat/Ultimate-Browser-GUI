@@ -22,3 +22,5 @@ https://github.com/RatInChat/Ultimate-Browser-GUI/blob/main/ultimatebookmarklet.
 
 ### Tips And Secrets (Well not secret anymore)
 None so far. Go find some :)
+
+(THIS IS NOT READY FOR NOW! MOST BUTTONS DO NOT WORK! THIS IS V0.4.0 OK? WAIT TILL V1!)
