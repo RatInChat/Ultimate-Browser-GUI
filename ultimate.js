@@ -1,6 +1,6 @@
 /*
 Ultimate Browser GUI
-By: RatInChat, And Helped By Piplup7575 who was forced to help. :)
+By: RatInChat, And Piplup7575 who was forced to help. :)
 
 This is a new maintained version based off of the nicer graphical interface of CrownJS.
 If you have any suggestions, please contact me on my discord server: https://discord.gg/haAUu2DaWm 
@@ -110,6 +110,8 @@ btn1.onclick = () => {
     btn5.id = "btn5"
     let btn6 = document.createElement("div")
     btn6.id = "btn6"
+    let btn7 = document.createElement("div")
+    btn7.id = "btn7"
     let proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/"
 
     main.id = "main"
@@ -129,6 +131,7 @@ btn1.onclick = () => {
     main.append(btn4)
     main.append(btn5)
     main.append(btn6)
+    main.append(btn7)
     backbtn.textContent = "Go back"
     backbtn.style.display = "none"
     jkkldsa.textContent = "Browser"
@@ -139,6 +142,7 @@ btn1.onclick = () => {
     btn4.textContent = "Edit/UnEdit Anything."
     btn5.textContent = "LocalStorage Editor"
     btn6.textContent = "Script Injector"
+    btn7.textContent = "X-Ray Goggles"
     ds1.style.display = "none"
     let goback = document.createElement("button")
     goback.id = "goback"
@@ -342,6 +346,13 @@ btn1.onclick = () => {
       
       document.head.appendChild(script)
     }
+  }
+  btn7.onclick = () => {
+    var script=document.createElement('script');
+    script.src='https://x-ray-goggles.mouse.org/webxray.js';
+    script.className='webxray';script.setAttribute('data-lang','en-US');
+    script.setAttribute('data-baseuri','https://x-ray-goggles.mouse.org');
+    document.head.appendChild(script);
   }
     // main css
     stylething.textContent = `
