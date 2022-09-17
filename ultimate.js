@@ -787,6 +787,7 @@ btn5.onclick = () => {
   box.appendChild(output)
   box.appendChild(output2)
   box.appendChild(output3)
+  box.appendChild(output4)
   goback.onclick = () => {
     main.style.display = "none"
   }
