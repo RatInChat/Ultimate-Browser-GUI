@@ -377,7 +377,7 @@ btn1.onclick = () => {
        font-family: "Open Sans";
       padding: -10px;
     }
-    #btn1, #btn2, #btn3, #btn4, #btn5, #btn6 {
+    #btn1, #btn2, #btn3, #btn4, #btn5, #btn6, #btn7 {
       background-color: grey;
       color: white;
       font-family: "Open Sans";
@@ -390,7 +390,7 @@ btn1.onclick = () => {
       transtion: 1s;
       transition-duration: 0.5s
     }
-    #btn2:hover,#btn1:hover, #btn3:hover, #btn4:hover, #btn5:hover, #btn6:hover {
+    #btn2:hover,#btn1:hover, #btn3:hover, #btn4:hover, #btn5:hover, #btn6:hover, #btn7:hover {
       background-color: white;
       color: black;
       font-family: "Open Sans";
