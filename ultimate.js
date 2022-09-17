@@ -781,6 +781,8 @@ btn5.onclick = () => {
   output2.textContent = "Proxy Browser: EngineXNetwork"
   let output3 = document.createElement("p")
   output3.textContent = "Piplup7575: Piplup7575"
+  let output4 = document.createElement("p")
+  output4.textContent = "X-Ray Goggles: mouse.org"
   box.appendChild(title)
   box.appendChild(output)
   box.appendChild(output2)
