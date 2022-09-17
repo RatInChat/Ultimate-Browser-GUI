@@ -1,6 +1,6 @@
 /*
 Ultimate Browser GUI
-By: RatInChat
+By: RatInChat, And Helped By Piplup7575 who was forced to help. :)
 
 This is a new maintained version based off of the nicer graphical interface of CrownJS.
 If you have any suggestions, please contact me on my discord server: https://discord.gg/haAUu2DaWm 
@@ -233,7 +233,8 @@ btn1.onclick = () => {
         tbody.appendChild(row_2);
      }
     }
-     load()
+     setInterval(load(), 15000);
+      load()
       box.id = "box"
       main.appendChild(box)
       let console23 = document.createElement("input")
@@ -318,30 +319,29 @@ btn1.onclick = () => {
   }
 
   // make script injector for btn6
-  btn6.onclick = () => {
-    alert('COMING SOON!')
-    // let what = prompt("Do you want to insert a script url or script code? (url/code)")
-    // if (what == "code") {
-    // let script = prompt("Insert a script to inject.")
-    // let script2 = document.createElement("script")
-    // script2.textContent = script
-    // const b = new Blob([script2], { type: 'text/javascript' });
-    // const u = URL.createObjectURL(b);
-    // const s = document.createElement('script');
-    // s.src = u;
-    // document.body.appendChild(s);
-    // document.body.removeChild(s);
-    // URL.revokeObjectURL(u);
-    // } else if (what == "url") {
-    //   let script = prompt("Insert a script url to inject.")
-    //   const b = new Blob([script], { type: 'text/javascript' });
-    //   const u = URL.createObjectURL(b);
-    //   const s = document.createElement('script');
-    //   s.src = u;
-    //   document.body.appendChild(s);
-    //   document.body.removeChild(s);
-    //   URL.revokeObjectURL(u);
-    // }
+  btn6.onclick = async () => {
+    let what = prompt("Do you want to insert a script url or script code? (url/code)")
+    if (what == "url") {
+      let url = prompt("Insert the url of the script.")
+      let script = document.createElement("script")
+      // fetch javascript url and asign it to javascript
+      let javascript = await fetch(url)
+        .then(response => response.text())
+        .then(text => script.textContent = text)
+      let encoded = await btoa(javascript)
+      await script.setAttribute("src", `data:text/text;base64,${encoded}`)
+      document.head.appendChild(script)
+    } else if (what == "code") {
+      let code = prompt("Insert the code of the script.")
+      let script = document.createElement("script")
+      let encoded = btoa(code)
+      script.setAttribute(
+        'src',
+        `data:text/text;base64,${encoded}`,
+      );
+      
+      document.head.appendChild(script)
+    }
   }
     // main css
     stylething.textContent = `
