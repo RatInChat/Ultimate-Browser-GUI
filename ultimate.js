@@ -34,7 +34,7 @@ let consolebtn = document.createElement("div")
 consolebtn.id = "consolebtn"
 mainframe.appendChild(logo)
 mainframe.id = "mainframe"
-let proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/"
+let proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/www."
 
 mainframe.id = "main"
 document.body.appendChild(mainframe)
@@ -112,7 +112,6 @@ btn1.onclick = () => {
     btn6.id = "btn6"
     let btn7 = document.createElement("div")
     btn7.id = "btn7"
-    let proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/"
 
     main.id = "main"
     document.body.appendChild(main)
@@ -547,7 +546,7 @@ z-index: 999999 !important;
       }
 
       else if (console.value == "piplup proxify site") {
-        let url = prompt("Insert a URL. (ex. google.com) DO NOT ADD www. or https://"); if (url == "" || url == null) { url = "google.com" }; var proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/www."; var code1 = "<iframe src="; var code2 = " width=100% height=100%>"; var codeIP3 = `${code1}${proxyDomain}${url}${code2}`;
+        let url = prompt("Insert a URL. (ex. google.com) DO NOT ADD www. or https://"); if (url == "" || url == null) { url = "google.com" };  var code1 = "<iframe src="; var code2 = " width=100% height=100%>"; var codeIP3 = `${code1}${proxyDomain}${url}${code2}`;
         document.write(codeIP3);
       }
 
@@ -756,6 +755,180 @@ console.addEventListener("keydown", function (event) {
   });
 
 }
+btn4.onclick = () => {
+  let stylething = document.createElement("style")
+  document.head.appendChild(stylething)
+  let style = document.createElement("style")
+// basically creating all elements + adding id's
+  let jkkldsa = document.createElement("h1")
+  let ds1 = document.createElement("p")
+  ds1.id = "ds1"
+  jkkldsa.id = "jkkldsa"
+  let btn1 = document.createElement("div")
+  btn1.id = "btn1"
+  let backbtn = document.createElement("button")
+  backbtn.id = "backbtn"
+  ds1.style.display = "none"
+  let author = document.createElement("h2")
+  author.id = "author"
+  document.head.appendChild(style)
+  let main = document.createElement("div");
+  main.id = "main"
+  document.body.appendChild(main)
+  main.append(jkkldsa)
+  main.append(backbtn)
+  main.append(author)
+  main.appendChild(ds1)
+  document.body.appendChild(main)
+  main.append(jkkldsa)
+  main.append(backbtn)
+  main.append(author)
+  main.appendChild(ds1)
+  main.append(btn1)
+  backbtn.textContent = "Go back"
+  backbtn.style.display = "none"
+  jkkldsa.textContent = "Other"
+  author.textContent = "Stuff that din't fit in the other categories."
+  btn1.textContent = "Themes"
+  ds1.style.display = "none"
+  let goback = document.createElement("button")
+  goback.id = "goback"
+  goback.style.display = ''
+  goback.textContent = "Go back"
+  main.appendChild(goback)
+
+  goback.onclick = () => {
+    main.style.display = "none"
+  }
+  btn1.onclick = function themes() {
+  let defualt = false;
+  let color = prompt("Please choose a theme. Available Themes: 'SeaBlue', 'FlamingRed', 'Gold.' (this command is temporarily broken. Some of it may not work.)")
+
+  if (color == "SeaBlue") {
+    mainframe.style.backgroundColor = "lightblue"
+    jkkldsa.style.color = "black"
+    author.style.color = "black"
+    ds1.style.color = "blue"
+    ds1.style.display = ''
+  } else if (color == "FlamingRed") {
+    mainframe.style.backgroundColor = "red"
+    jkkldsa.style.color = "white"
+    author.style.color = "white"
+    ds1.style.color = "yellow"
+    ds1.style.display = ''
+
+  } else if (color == "Gold") {
+
+    ds1.style.display = ''
+    btn1.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    btn2.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    btn3.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    btn4.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    btn5.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    btn6.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    anime.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    newbtn1.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    newbtn2.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    newbtn3.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    newbtn4.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    newbtn5.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    newbtn6.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    newbtn7.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+    backbtn.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
+  } else {
+      mainframe.style.backgroundColor = "black"
+      jkkldsa.style.color = "white"
+      ds1.style.color = "white"
+      ds1.style.display = ''
+      color = "black"
+      defualt = true;
+      ds1.textContent = "None Selected. Defualt Enabled."
+      ds1.style.display = ''
+  }
+  if (defualt == false) {
+  ds1.textContent = "Activated Themes. Selected Theme: " + color
+  ds1.style.display = ''
+  }
+  
+  }
+  stylething.textContent = `
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+  #main {
+    background-color: black;
+    width: 800px !important;
+    height: 600px !important;
+    border-radius: 10px;
+    animation-name: slidein;
+    animation-duration: 2s;
+    text-align: center;
+    margin: 0px auto;
+    z-index: 999999 !important;
+    font-family: "Open Sans";
+    position: absolute !important;
+    left: 300px !important;
+    top: 50px !important;
+  }
+  #jkkldsa, #author {
+    color: white;
+     font-family: "Open Sans";
+    padding: -10px;
+  }
+  #btn1, #btn2, #btn3, #btn4, #btn5, #btn6, #btn7 {
+    background-color: grey;
+    color: white;
+    font-family: "Open Sans";
+    width: 50% !important;
+    position: relative !important;
+    font-size: 25px !important;
+    border-radius: 10px;
+    height: 5.5% !important;
+    margin: 5px auto !important;
+    transtion: 1s;
+    transition-duration: 0.5s
+  }
+  #btn2:hover,#btn1:hover, #btn3:hover, #btn4:hover, #btn5:hover, #btn6:hover, #btn7:hover {
+    background-color: white;
+    color: black;
+    font-family: "Open Sans";
+    width: 55% !important;
+    position: relative !important;
+    font-size: 25px;
+  border-radius: 10px;
+    height: 5.5% !important;
+    margin: 5px auto;
+    transition: all .2s ease-in-out;
+    transform: scale(1.05);
+   
+  }
+  #ds1 {
+    color: green;
+    font-family: "Open Sans";
+    font-family: 10px;
+    position: absolute;
+    top: -5px;
+    left: 10px;
+  }
+  @keyframes slidein {
+    0% {
+      opacity: 0%
+    }
+    100% {
+      opacity: 100%
+    }
+  }
+  @keyframes slideout {
+    0% {
+      opacity: 100%
+    }
+    100% {
+      opacity: 0%
+    }
+  }
+  #goback {
+    z-index: 999999 !important;
+    }
+`
+}
 btn5.onclick = () => {
 
   let stylething = document.createElement("style")
@@ -823,7 +996,6 @@ z-index: 999999 !important;
  overflow-y: scroll; /* Show vertical scrollbar */
 }
 `
-
 };
 style.textContent = `
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
