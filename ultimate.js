@@ -6,7 +6,7 @@ This is a new maintained version based off of the nicer graphical interface of C
 If you have any suggestions, please contact me on my discord server: https://discord.gg/haAUu2DaWm 
 */
 // do not remove the style thing below -- it is essential
-let date = Date.now();
+let date = "3792y89ru3029jfidsoajf90239ufsd";
 let style = document.createElement("style")
 // basically creating all elements + adding id's
 let jkkldsa = document.createElement("h1")
@@ -83,7 +83,6 @@ exit.onclick = () => {
 }
 
 btn1.onclick = () => {
-
     let stylething = document.createElement("style")
     document.head.appendChild(stylething)
     let style = document.createElement("style")
@@ -943,7 +942,7 @@ btn4.onclick = () => {
 `
 }
 btn5.onclick = () => {
-
+  
   let stylething = document.createElement("style")
   document.head.appendChild(stylething)
   let main = document.createElement("div")
