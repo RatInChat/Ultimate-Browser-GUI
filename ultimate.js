@@ -5,14 +5,19 @@ By: RatInChat, And Piplup7575 who was forced to help. :)
 This is a new maintained version based off of the nicer graphical interface of CrownJS.
 If you have any suggestions, please contact me on my discord server: https://discord.gg/haAUu2DaWm 
 */
+
 // do not remove the style thing below -- it is essential
 let date = `d${Date.now()}`;
 let style = document.createElement("style")
 // basically creating all elements + adding id's
 let jkkldsa = document.createElement("h1")
+let header = document.createElement(`div`)
+header.id = `${date}-header`
+let minimize = document.createElement("div")
+minimize.id = `${date}-minimize`
 let ds1 = document.createElement("p")
 ds1.id = `${date}-ds1`
-jkkldsa.id = `${date}-jkkldsa.id`
+jkkldsa.id = `${date}-jkkldsa`
 let btn1 = document.createElement("div")
 btn1.id = `${date}-btn1`
 let btn2 = document.createElement("div")
@@ -23,6 +28,10 @@ let btn4 = document.createElement("div")
 btn4.id = `${date}-btn4`
 let btn5 = document.createElement("div")
 btn5.id = `${date}-btn5`
+let circle1 = document.createElement("div")
+circle1.className = `${date}-circleBase ${date}-circle1`
+let circle2 = document.createElement("div")
+circle2.className = `${date}-circleBase ${date}-circle2`
 let backbtn = document.createElement("button")
 backbtn.id = `${date}-backbtn`
 ds1.style.display = "none"
@@ -33,6 +42,7 @@ let mainframe = document.createElement("div");
 let logo = document.createElement("img")
 let consolebtn = document.createElement("div")
 consolebtn.id = `${date}-consolebtn`
+mainframe.appendChild(header)
 mainframe.appendChild(logo)
 mainframe.id = `${date}-mainframe`
 let proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/www."
@@ -56,6 +66,7 @@ mainframe.append(btn2)
 mainframe.append(btn3)
 mainframe.append(btn4)
 mainframe.append(btn5)
+
 mainframe.appendChild(consolebtn)
 backbtn.textContent = "Go back"
 backbtn.style.display = "none"
@@ -66,21 +77,104 @@ btn2.textContent = "Games"
 btn3.textContent = "Special"
 btn4.textContent = "Other"
 btn5.textContent = "Credits"
-// btn1.textContent = "History Flooder"
-// btn2.textContent = "Tab Cloak"
-// btn3.textContent = "Proxy Browser"
-// btn4.textContent = "Themes"
 consolebtn.textContent = "Open Console"
 ds1.style.display = "none"
-let exit = document.createElement("button")
-exit.id = `${date}-exit`
-exit.style.display = ''
-exit.textContent = "Exit"
-mainframe.appendChild(exit)
 
-exit.onclick = () => {
+circle1.onclick = () => {
   mainframe.style.display = "none"
 }
+circle2.onclick = async () => {
+  document.body.appendChild(minimize)
+  minimize.style.display = ""
+  mainframe.style.display = "none"
+  dragElement2(dragable1, dragzone1);
+}
+header.appendChild(circle1)
+header.appendChild(circle2)
+
+const dragElement = (element, dragzone) => {
+  let pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
+//MouseUp occurs when the user releases the mouse button
+  const dragMouseUp = () => {
+    document.onmouseup = null;
+//onmousemove attribute fires when the pointer is moving while it is over an element.
+    document.onmousemove = null;
+  };
+
+  const dragMouseMove = (event) => {
+
+    event.preventDefault();
+//clientX property returns the horizontal coordinate of the mouse pointer
+    pos1 = pos3 - event.clientX;
+//clientY property returns the vertical coordinate of the mouse pointer
+    pos2 = pos4 - event.clientY;
+    pos3 = event.clientX;
+    pos4 = event.clientY;
+//offsetTop property returns the top position relative to the parent
+    element.style.top = `${element.offsetTop - pos2}px`;
+    element.style.left = `${element.offsetLeft - pos1}px`;
+  };
+
+  const dragMouseDown = (event) => {
+    event.preventDefault();
+
+    pos3 = event.clientX;
+    pos4 = event.clientY;
+
+    document.onmouseup = dragMouseUp;
+    document.onmousemove = dragMouseMove;
+  };
+
+  dragzone.onmousedown = dragMouseDown;
+};
+
+const dragElement2 = (element, dragzone) => {
+  let pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
+//MouseUp occurs when the user releases the mouse button
+  const dragMouseUp = () => {
+    document.onmouseup = null;
+//onmousemove attribute fires when the pointer is moving while it is over an element.
+    document.onmousemove = null;
+  };
+
+  const dragMouseMove = (event) => {
+
+    event.preventDefault();
+//clientX property returns the horizontal coordinate of the mouse pointer
+    pos1 = pos3 - event.clientX;
+//clientY property returns the vertical coordinate of the mouse pointer
+    pos2 = pos4 - event.clientY;
+    pos3 = event.clientX;
+    pos4 = event.clientY;
+//offsetTop property returns the top position relative to the parent
+    element.style.top = `${element.offsetTop - pos2}px`;
+    element.style.left = `${element.offsetLeft - pos1}px`;
+  };
+
+  const dragMouseDown = (event) => {
+    event.preventDefault();
+
+    pos3 = event.clientX;
+    pos4 = event.clientY;
+
+    document.onmouseup = dragMouseUp;
+    document.onmousemove = dragMouseMove;
+  };
+
+  dragzone.onmousedown = dragMouseDown;
+};
+
+const dragable = document.getElementById(`${date}-main`),
+  dragzone = document.getElementById(`${date}-header`);
+const dragable1 = document.getElementById(`${date}-minimize`),
+  dragzone1 = document.getElementById(`${date}-minimize`);
+dragElement(dragable, dragzone);
 
 btn1.onclick = () => {
     let stylething = document.createElement("style")
@@ -572,58 +666,6 @@ z-index: 999999 !important;
 
 }
 
-// btn4.onclick = function themes() {
-
-//   let color = prompt("Please choose a theme. Available Themes: 'SeaBlue', 'FlamingRed', 'Gold.'")
-
-//   if (color == "SeaBlue") {
-//     mainframe.style.backgroundColor = "lightblue"
-//     jkkldsa.style.color = "black"
-//     author.style.color = "black"
-//     ds1.style.color = "blue"
-//     ds1.style.display = ''
-//   } else if (color == "FlamingRed") {
-//     mainframe.style.backgroundColor = "red"
-//     jkkldsa.style.color = "white"
-//     author.style.color = "white"
-//     ds1.style.color = "yellow"
-//     ds1.style.display = ''
-
-//   } else if (color == "Gold") {
-
-//     ds1.style.display = ''
-//     btn1.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     btn2.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     btn3.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     btn4.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     btn5.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     btn6.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     anime.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     newbtn1.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     newbtn2.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     newbtn3.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     newbtn4.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     newbtn5.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     newbtn6.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     newbtn7.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//     backbtn.style.backgroundImage = "url('https://media.istockphoto.com/photos/gold-background-golden-polished-metal-with-steel-texture-picture-id1293988714?b=1&k=20&m=1293988714&s=170667a&w=0&h=1McwI39TCx0I8_RSUKtAxtl41KOFDwy68MmSOFDiyGQ=')";
-//   } else {
-//       mainframe.style.backgroundColor = "black"
-//       jkkldsa.style.color = "white"
-//       ds1.style.color = "white"
-//       ds1.style.display = ''
-//       color = "black"
-//   }
-//   ds1.textContent = "Activated Themes. Selected Theme: " + color
-//   ds1.style.display = ''
-  
-// }
-
-// proxy browser
-// btn3.addEventListener("click", function () {
-//   let url = prompt("Insert a URL. (ex. google.com) DO NOT ADD www. or https://"); if (url == "" || url == null) { url = "www.google.com" }; var proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/www."; var code1 = "<iframe src="; var code2 = " width=100% height=100%>"; var codeIP3 = `${code1}${proxyDomain}${url}${code2}`;
-//    document.write(codeIP3);
-// });
 
 document.addEventListener("keydown", function (e) {
   var key = e.keyCode + e.location;
@@ -1023,8 +1065,8 @@ style.textContent = `
   z-index: 999999 !important;
   font-family: "Open Sans";
   position: absolute !important;
-  left: 300px !important;
-  top: 50px !important;
+  left: 300px;
+  top: 50px;
 }
 #${date}-jkkldsa, #${date}-author {
   color: white;
@@ -1066,6 +1108,21 @@ border-radius: 10px;
   top: -5px;
   left: 10px;
 }
+#${date}-minimize {
+  width: 50px !important;
+  height: 5px !important;
+  left: 300px;
+  top: 50px;
+  position: absolute !important;
+}
+#${date}-header, #${date}-minimize {
+  border-radius: 10px 10px 0px 0px;
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #D0D0D0;
+  color: #fff;
+}
 @keyframes slidein {
   0% {
     opacity: 0%
@@ -1082,7 +1139,25 @@ border-radius: 10px;
     opacity: 0%
   }
 }
-#${date}-exit {
-  z-index: 999999 !important;
+  .${date}-circleBase {
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+  }
+  
+  .${date}-circle1 {
+    width: 15px;
+    height: 15px;
+    background: #F20000;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
+  
+  .${date}-circle2 {
+    width: 15px;
+    height: 15px;
+    background: #FFC947;
+    border: 1px solid #000;
+    cursor: pointer;
   }
 `
