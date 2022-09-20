@@ -32,6 +32,10 @@ let circle1 = document.createElement("div")
 circle1.className = `${date}-circleBase ${date}-circle1`
 let circle2 = document.createElement("div")
 circle2.className = `${date}-circleBase ${date}-circle2`
+let circle3 = document.createElement("div")
+circle3.className = `${date}-circleBase ${date}-circle3`
+let circle4 = document.createElement("div")
+circle4.className = `${date}-circleBase ${date}-circle4`
 let backbtn = document.createElement("button")
 backbtn.id = `${date}-backbtn`
 ds1.style.display = "none"
@@ -81,7 +85,16 @@ consolebtn.textContent = "Open Console"
 ds1.style.display = "none"
 
 circle1.onclick = () => {
-  mainframe.style.display = "none"
+  mainframe.setAttribute("closing", "");
+
+  mainframe.addEventListener(
+    "animationend",
+    () => {
+      mainframe.removeAttribute("closing");
+      mainframe.style.display = "none"
+    },
+    { once: true }
+  );
 }
 circle2.onclick = async () => {
   document.body.appendChild(minimize)
@@ -89,9 +102,27 @@ circle2.onclick = async () => {
   mainframe.style.display = "none"
   dragElement2(dragable1, dragzone1);
 }
+circle3.onclick = () => {
+  minimize.setAttribute("closing", "");
+
+  minimize.addEventListener(
+    "animationend",
+    () => {
+      minimize.removeAttribute("closing");
+      minimize.style.display = "none"
+    },
+    { once: true }
+  );
+}
+circle4.onclick = async () => {
+  document.body.appendChild(mainframe)
+  minimize.style.display = "none"
+  mainframe.style.display = ""
+}
 header.appendChild(circle1)
 header.appendChild(circle2)
-
+minimize.appendChild(circle3)
+minimize.appendChild(circle4)
 const dragElement = (element, dragzone) => {
   let pos1 = 0,
     pos2 = 0,
@@ -1068,6 +1099,23 @@ style.textContent = `
   left: 300px;
   top: 50px;
 }
+#${date}-main[closing] {
+  background-color: black;
+  width: 800px !important;
+  height: 600px !important;
+  border-radius: 10px;
+  animation-name: slidein;
+  animation-duration: 2s;
+  text-align: center;
+  margin: 0px auto;
+  z-index: 999999 !important;
+  font-family: "Open Sans";
+  position: absolute !important;
+  left: 300px;
+  top: 50px;
+  animation: fade-out 500ms forwards;
+}
+
 #${date}-jkkldsa, #${date}-author {
   color: white;
    font-family: "Open Sans";
@@ -1115,6 +1163,14 @@ border-radius: 10px;
   top: 50px;
   position: absolute !important;
 }
+#${date}-minimize[closing] {
+  width: 50px !important;
+  height: 5px !important;
+  left: 300px;
+  top: 50px;
+  position: absolute !important;
+    animation: fade-out 500ms forwards;
+}
 #${date}-header, #${date}-minimize {
   border-radius: 10px 10px 0px 0px;
   padding: 10px;
@@ -1131,12 +1187,12 @@ border-radius: 10px;
     opacity: 100%
   }
 }
-@keyframes slideout {
+@keyframes fade-out {
   0% {
-    opacity: 100%
+    opacity: 1;
   }
   100% {
-    opacity: 0%
+    opacity: 0;
   }
 }
   .${date}-circleBase {
@@ -1145,7 +1201,7 @@ border-radius: 10px;
     float: left;
   }
   
-  .${date}-circle1 {
+  .${date}-circle1, .${date}-circle3 {
     width: 15px;
     height: 15px;
     background: #F20000;
@@ -1153,7 +1209,7 @@ border-radius: 10px;
     cursor: pointer;
   }
   
-  .${date}-circle2 {
+  .${date}-circle2, .${date}-circle4 {
     width: 15px;
     height: 15px;
     background: #FFC947;
