@@ -96,12 +96,6 @@ circle1.onclick = () => {
     { once: true }
   );
 }
-circle2.onclick = async () => {
-  document.body.appendChild(minimize)
-  minimize.style.display = ""
-  mainframe.style.display = "none"
-  dragElement2(dragable1, dragzone1);
-}
 circle3.onclick = () => {
   minimize.setAttribute("closing", "");
 
@@ -162,7 +156,7 @@ const dragElement = (element, dragzone) => {
   dragzone.onmousedown = dragMouseDown;
 };
 
-const dragElement2 = (element, dragzone) => {
+const dragElement2 = (element) => {
   let pos1 = 0,
     pos2 = 0,
     pos3 = 0,
@@ -198,15 +192,19 @@ const dragElement2 = (element, dragzone) => {
     document.onmousemove = dragMouseMove;
   };
 
-  dragzone.onmousedown = dragMouseDown;
+  element.onmousedown = dragMouseDown;
 };
 
 const dragable = document.getElementById(`${date}-main`),
   dragzone = document.getElementById(`${date}-header`);
-const dragable1 = document.getElementById(`${date}-minimize`),
-  dragzone1 = document.getElementById(`${date}-minimize`);
+const dragable1 = document.getElementById(`${date}-minimize`);
 dragElement(dragable, dragzone);
-
+circle2.onclick = async () => {
+  document.body.appendChild(minimize)
+  minimize.style.display = ""
+  mainframe.style.display = "none"
+  dragElement2(dragable1);
+}
 btn1.onclick = () => {
     let stylething = document.createElement("style")
     document.head.appendChild(stylething)
