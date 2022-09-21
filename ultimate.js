@@ -113,10 +113,15 @@ circle4.onclick = async () => {
   minimize.style.display = "none"
   mainframe.style.display = ""
 }
+
+let right = 300;
+let left = 50;
+
 header.appendChild(circle1)
 header.appendChild(circle2)
 minimize.appendChild(circle3)
 minimize.appendChild(circle4)
+
 const dragElement = (element, dragzone) => {
   let pos1 = 0,
     pos2 = 0,
@@ -139,8 +144,12 @@ const dragElement = (element, dragzone) => {
     pos3 = event.clientX;
     pos4 = event.clientY;
 //offsetTop property returns the top position relative to the parent
-    element.style.top = `${element.offsetTop - pos2}px`;
-    element.style.left = `${element.offsetLeft - pos1}px`;
+    right = `${element.offsetTop - pos2}px`;
+    left = `${element.offsetLeft - pos1}px`;
+    element.style.top = right;
+    element.style.left = left;
+    minimize.style.top = right;
+    minimize.style.left = left;
   };
 
   const dragMouseDown = (event) => {
@@ -162,13 +171,13 @@ const dragElement2 = (element) => {
     pos3 = 0,
     pos4 = 0;
 //MouseUp occurs when the user releases the mouse button
-  const dragMouseUp = () => {
+  const dragMouseUp2 = () => {
     document.onmouseup = null;
 //onmousemove attribute fires when the pointer is moving while it is over an element.
     document.onmousemove = null;
   };
 
-  const dragMouseMove = (event) => {
+  const dragMouseMove2 = (event) => {
 
     event.preventDefault();
 //clientX property returns the horizontal coordinate of the mouse pointer
@@ -178,31 +187,35 @@ const dragElement2 = (element) => {
     pos3 = event.clientX;
     pos4 = event.clientY;
 //offsetTop property returns the top position relative to the parent
-    element.style.top = `${element.offsetTop - pos2}px`;
-    element.style.left = `${element.offsetLeft - pos1}px`;
+    right = `${element.offsetTop - pos2}px`;
+    left = `${element.offsetLeft - pos1}px`;
+    element.style.top = right;
+    element.style.left = left;
+    mainframe.style.top = right;
+    mainframe.style.left = left;
   };
 
-  const dragMouseDown = (event) => {
+  const dragMouseDown2 = (event) => {
     event.preventDefault();
 
     pos3 = event.clientX;
     pos4 = event.clientY;
 
-    document.onmouseup = dragMouseUp;
-    document.onmousemove = dragMouseMove;
+    document.onmouseup = dragMouseUp2;
+    document.onmousemove = dragMouseMove2;
   };
 
-  element.onmousedown = dragMouseDown;
+  element.onmousedown = dragMouseDown2;
 };
 
 const dragable = document.getElementById(`${date}-main`),
   dragzone = document.getElementById(`${date}-header`);
-const dragable1 = document.getElementById(`${date}-minimize`);
 dragElement(dragable, dragzone);
 circle2.onclick = async () => {
   document.body.appendChild(minimize)
   minimize.style.display = ""
   mainframe.style.display = "none"
+  const dragable1 = document.getElementById(`${date}-minimize`);
   dragElement2(dragable1);
 }
 btn1.onclick = () => {
@@ -305,7 +318,7 @@ btn1.onclick = () => {
     
     }
     btn3.addEventListener("click", function () {
-      let url = prompt("Insert a URL. (ex. google.com) DO NOT ADD www. or https://"); if (url == "" || url == null) { url = "google.com" }; var proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/www."; var code1 = "<iframe src="; var code2 = " width=100% height=100%>"; var codeIP3 = `${code1}${proxyDomain}${url}${code2}`;
+      let url = prompt("Insert a URL. (ex. google.com) DO NOT ADD www. or https://"); if (url == "" || url == null) { url = "google.com" }; var code1 = "<iframe src="; var code2 = " width=100% height=100%>"; var codeIP3 = `${code1}${proxyDomain}${url}${code2}`;
        document.write(codeIP3);
     });
     btn4.addEventListener("click", function () {
@@ -826,6 +839,9 @@ console.addEventListener("keydown", function (event) {
       else if (console.value == "piplup proxify site") {
         let url = prompt("Insert a URL. (ex. google.com) DO NOT ADD www. or https://"); if (url == "" || url == null) { url = "google.com" }; var proxyDomain = "https://deploy.ratinchat.repl.co/service/hvtrs8/www."; var code1 = "<iframe src="; var code2 = " width=100% height=100%>"; var codeIP3 = `${code1}${proxyDomain}${url}${code2}`;
         document.write(codeIP3);
+      }       else if (console.value == "piplup install (your proxy name)") {
+        output.textContent = "Downloaded (your proxy name)"
+        proxyDomain = "proxy url here"; // dead????? yessir oh ok just do it. Im making the chat thing in another window. 
       }
 
       else {
@@ -1094,8 +1110,8 @@ style.textContent = `
   z-index: 999999 !important;
   font-family: "Open Sans";
   position: absolute !important;
-  left: 300px;
-  top: 50px;
+  left: ${right}px;
+  top: ${left}px;
 }
 #${date}-main[closing] {
   background-color: black;
@@ -1164,8 +1180,8 @@ border-radius: 10px;
 #${date}-minimize[closing] {
   width: 50px !important;
   height: 5px !important;
-  left: 300px;
-  top: 50px;
+  left: ${right}px;
+  top: ${left}px;
   position: absolute !important;
     animation: fade-out 500ms forwards;
 }
