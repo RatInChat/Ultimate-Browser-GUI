@@ -299,7 +299,7 @@ btn1.onclick = () => {
     main.appendChild(goback)
 
     goback.onclick = () => {
-      main.style.display = "none"
+      main.remove()
       mainframe.style.display = ""
     }
     circle1.onclick = () => {
@@ -331,9 +331,9 @@ btn1.onclick = () => {
       minimize.style.display = "none"
       main.style.display = ""
     }
-    
-    let right = 300;
-    let left = 50;
+
+    let right1 = right;
+    let left1 = left;
     
     header.appendChild(circle1)
     header.appendChild(circle2)
@@ -477,13 +477,18 @@ btn1.onclick = () => {
       }
     })
     btn5.onclick = () => {
-
+      main.style.display = "none"
       let stylething = document.createElement("style")
       document.head.appendChild(stylething)
-      let main = document.createElement("div")
-      main.id = `${date}-main`
-      document.body.appendChild(main)
-      main.appendChild(style)
+      let header = document.createElement(`div`)
+      header.id = `${date}-header`
+      let minimize = document.createElement("div")
+      minimize.id = `${date}-minimize`
+      let main1 = document.createElement("div")
+      main1.id = `${date}-main`
+      document.body.appendChild(main1)
+      main1.appendChild(style)
+      main1.appendChild(header)
       let goback = document.createElement("button")
       goback.id = `${date}-goback`
       let submit = document.createElement("button")
@@ -523,29 +528,169 @@ btn1.onclick = () => {
      setInterval(load(), 15000);
       load()
       box.id = `${date}-box`
-      main.appendChild(box)
+      main1.appendChild(box)
       let console23 = document.createElement("input")
       let console233 = document.createElement("input")
       console23.id = `${date}-console23`
       console233.id = `${date}-console233`
-      main.appendChild(console23)
-      main.appendChild(console233)
+      let circle1 = document.createElement("div")
+      circle1.className = `${date}-circleBase ${date}-circle1`
+      let circle2 = document.createElement("div")
+      circle2.className = `${date}-circleBase ${date}-circle2`
+      let circle3 = document.createElement("div")
+      circle3.className = `${date}-circleBase ${date}-circle3`
+      let circle4 = document.createElement("div")
+      circle4.className = `${date}-circleBase ${date}-circle4`
+      
+      main1.appendChild(console23)
+      main1.appendChild(console233)
       console23.placeholder = "Key"
       console233.placeholder = "Value"
       goback.style.display = ''
       goback.textContent = "Go back"
       submit.style.display = ''
       submit.textContent = "Submit"
-      main.appendChild(submit)
-      main.appendChild(goback)
+      main1.appendChild(submit)
+      main1.appendChild(goback)
       submit.onclick = () => {
         localStorage.setItem(console23.value, console233.value);
           load();
       }
       goback.onclick = () => {
-        main.style.display = ""
+        main1.remove()
+        main.style.display = ''
       }
-    
+      circle1.onclick = () => {
+        main1.setAttribute("closing", "");
+      
+        main1.addEventListener(
+          "animationend",
+          () => {
+            main1.removeAttribute("closing");
+            main1.remove()
+          },
+          { once: true }
+        );
+      }
+      circle3.onclick = () => {
+        minimize.setAttribute("closing", "");
+      
+        minimize.addEventListener(
+          "animationend",
+          () => {
+            minimize.removeAttribute("closing");
+            minimize.style.display = "none"
+          },
+          { once: true }
+        );
+      }
+      circle4.onclick = async () => {
+        document.body.appendChild(main1)
+        minimize.style.display = "none"
+        main1.style.display = ""
+      }
+  
+      header.appendChild(circle1)
+      header.appendChild(circle2)
+      minimize.appendChild(circle3)
+      minimize.appendChild(circle4)
+      
+      const dragElement = (element, dragzone) => {
+        let pos1 = 0,
+          pos2 = 0,
+          pos3 = 0,
+          pos4 = 0;
+      //MouseUp occurs when the user releases the mouse button
+        const dragMouseUp = () => {
+          document.onmouseup = null;
+      //onmousemove attribute fires when the pointer is moving while it is over an element.
+          document.onmousemove = null;
+        };
+      
+        const dragMouseMove = (event) => {
+      
+          event.preventDefault();
+      //clientX property returns the horizontal coordinate of the mouse pointer
+          pos1 = pos3 - event.clientX;
+      //clientY property returns the vertical coordinate of the mouse pointer
+          pos2 = pos4 - event.clientY;
+          pos3 = event.clientX;
+          pos4 = event.clientY;
+      //offsetTop property returns the top position relative to the parent
+          right = `${element.offsetTop - pos2}px`;
+          left = `${element.offsetLeft - pos1}px`;
+          element.style.top = right;
+          element.style.left = left;
+          minimize.style.top = right;
+          minimize.style.left = left;
+        };
+      
+        const dragMouseDown = (event) => {
+          event.preventDefault();
+      
+          pos3 = event.clientX;
+          pos4 = event.clientY;
+      
+          document.onmouseup = dragMouseUp;
+          document.onmousemove = dragMouseMove;
+        };
+      
+        dragzone.onmousedown = dragMouseDown;
+      };
+      
+      const dragElement2 = (element) => {
+        let pos1 = 0,
+          pos2 = 0,
+          pos3 = 0,
+          pos4 = 0;
+      //MouseUp occurs when the user releases the mouse button
+        const dragMouseUp2 = () => {
+          document.onmouseup = null;
+      //onmousemove attribute fires when the pointer is moving while it is over an element.
+          document.onmousemove = null;
+        };
+      
+        const dragMouseMove2 = (event) => {
+      
+          event.preventDefault();
+      //clientX property returns the horizontal coordinate of the mouse pointer
+          pos1 = pos3 - event.clientX;
+      //clientY property returns the vertical coordinate of the mouse pointer
+          pos2 = pos4 - event.clientY;
+          pos3 = event.clientX;
+          pos4 = event.clientY;
+      //offsetTop property returns the top position relative to the parent
+          right = `${element.offsetTop - pos2}px`;
+          left = `${element.offsetLeft - pos1}px`;
+          element.style.top = right;
+          element.style.left = left;
+          mainframe.style.top = right;
+          mainframe.style.left = left;
+        };
+      
+        const dragMouseDown2 = (event) => {
+          event.preventDefault();
+      
+          pos3 = event.clientX;
+          pos4 = event.clientY;
+      
+          document.onmouseup = dragMouseUp2;
+          document.onmousemove = dragMouseMove2;
+        };
+      
+        element.onmousedown = dragMouseDown2;
+      };
+      
+      const dragable = main1,
+        dragzone = header;
+      dragElement(dragable, dragzone);
+      circle2.onclick = async () => {
+        document.body.appendChild(minimize)
+        minimize.style.display = ""
+        main1.style.display = "none"
+        const dragable1 = minimize;
+        dragElement2(dragable1);
+      }
       // main css
       stylething.textContent = `
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
@@ -612,6 +757,50 @@ btn1.onclick = () => {
     color: white;
     font-family: "Open Sans";
   }
+  #${date}-minimize {
+    width: 50px !important;
+    height: 5px !important;
+    left: ${right1}px;
+    top: ${left1}px;
+    position: absolute !important;
+  }
+  #${date}-minimize[closing] {
+    width: 50px !important;
+    height: 5px !important;
+    left: ${right1}px;
+    top: ${left1}px;
+    position: absolute !important;
+      animation: fade-out 500ms forwards;
+  }
+  #${date}-header, #${date}-minimize {
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #D0D0D0;
+    color: #fff;
+  }
+  .${date}-circleBase {
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+  }
+  
+  .${date}-circle1, .${date}-circle3 {
+    width: 15px;
+    height: 15px;
+    background: #F20000;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
+  
+  .${date}-circle2, .${date}-circle4 {
+    width: 15px;
+    height: 15px;
+    background: #FFC947;
+    border: 1px solid #000;
+    cursor: pointer;
+  }
     `
     
     
@@ -664,8 +853,8 @@ btn1.onclick = () => {
       z-index: 999999 !important;
       font-family: "Open Sans";
       position: absolute !important;
-      left: ${right}px;
-      top: ${left}px;
+      left: ${right1}px;
+      top: ${left1}px;
     }
     #${date}-main[closing] {
       background-color: black;
@@ -679,23 +868,23 @@ btn1.onclick = () => {
       z-index: 999999 !important;
       font-family: "Open Sans";
       position: absolute !important;
-      left: ${right}px;
-      top: ${left}px;
+      left: ${right1}px;
+      top: ${left1}px;
       animation: fade-out 500ms forwards;
     }
     
     #${date}-minimize {
       width: 50px !important;
       height: 5px !important;
-      left: ${right}px;
-      top: ${left}px;
+      left: ${right1}px;
+      top: ${left1}px;
       position: absolute !important;
     }
     #${date}-minimize[closing] {
       width: 50px !important;
       height: 5px !important;
-      left: ${right}px;
-      top: ${left}px;
+      left: ${right1}px;
+      top: ${left1}px;
       position: absolute !important;
         animation: fade-out 500ms forwards;
     }
@@ -706,14 +895,6 @@ btn1.onclick = () => {
       z-index: 10;
       background-color: #D0D0D0;
       color: #fff;
-    }
-    #${date}-minimize[closing] {
-      width: 50px !important;
-      height: 5px !important;
-      left: ${right}px;
-      top: ${left}px;
-      position: absolute !important;
-        animation: fade-out 500ms forwards;
     }
     #${date}-jkkldsa, #${date}-author {
       color: white;
@@ -761,14 +942,6 @@ btn1.onclick = () => {
       }
       100% {
         opacity: 100%
-      }
-    }
-    @keyframes slideout {
-      0% {
-        opacity: 100%
-      }
-      100% {
-        opacity: 0%
       }
     }
     .${date}-circleBase {
