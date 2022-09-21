@@ -1,5 +1,5 @@
 # Ultmate Browser Gui
-V0.4.0
+V0.5.0
 By: RatInChat (norterfish#7172), and Piplup7575 who was forced to help and was not given a choice to not help 😆
 Might be broken right now because of uniquify.
 Based off of [CrownJS](https://github.com/jangodev/CrownJS)
