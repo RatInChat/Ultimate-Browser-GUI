@@ -219,10 +219,15 @@ circle2.onclick = async () => {
   dragElement2(dragable1);
 }
 btn1.onclick = () => {
+    mainframe.style.display = "none"
     let stylething = document.createElement("style")
     document.head.appendChild(stylething)
     let style = document.createElement("style")
 // basically creating all elements + adding id's
+    let header = document.createElement(`div`)
+    header.id = `${date}-header`
+    let minimize = document.createElement("div")
+    minimize.id = `${date}-minimize`
     let jkkldsa = document.createElement("h1")
     let ds1 = document.createElement("p")
     ds1.id = `${date}-ds1`
@@ -248,9 +253,17 @@ btn1.onclick = () => {
     btn6.id = `${date}-btn6`
     let btn7 = document.createElement("div")
     btn7.id = `${date}-btn7`
-
+    let circle1 = document.createElement("div")
+    circle1.className = `${date}-circleBase ${date}-circle1`
+    let circle2 = document.createElement("div")
+    circle2.className = `${date}-circleBase ${date}-circle2`
+    let circle3 = document.createElement("div")
+    circle3.className = `${date}-circleBase ${date}-circle3`
+    let circle4 = document.createElement("div")
+    circle4.className = `${date}-circleBase ${date}-circle4`
     main.id = `${date}-main`
     document.body.appendChild(main)
+    main.appendChild(header)
     main.append(jkkldsa)
     main.append(backbtn)
     main.append(author)
@@ -287,6 +300,141 @@ btn1.onclick = () => {
 
     goback.onclick = () => {
       main.style.display = "none"
+      mainframe.style.display = ""
+    }
+    circle1.onclick = () => {
+      main.setAttribute("closing", "");
+    
+      main.addEventListener(
+        "animationend",
+        () => {
+          main.removeAttribute("closing");
+          main.remove()
+        },
+        { once: true }
+      );
+    }
+    circle3.onclick = () => {
+      minimize.setAttribute("closing", "");
+    
+      minimize.addEventListener(
+        "animationend",
+        () => {
+          minimize.removeAttribute("closing");
+          minimize.style.display = "none"
+        },
+        { once: true }
+      );
+    }
+    circle4.onclick = async () => {
+      document.body.appendChild(main)
+      minimize.style.display = "none"
+      main.style.display = ""
+    }
+    
+    let right = 300;
+    let left = 50;
+    
+    header.appendChild(circle1)
+    header.appendChild(circle2)
+    minimize.appendChild(circle3)
+    minimize.appendChild(circle4)
+    
+    const dragElement = (element, dragzone) => {
+      let pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+    //MouseUp occurs when the user releases the mouse button
+      const dragMouseUp = () => {
+        document.onmouseup = null;
+    //onmousemove attribute fires when the pointer is moving while it is over an element.
+        document.onmousemove = null;
+      };
+    
+      const dragMouseMove = (event) => {
+    
+        event.preventDefault();
+    //clientX property returns the horizontal coordinate of the mouse pointer
+        pos1 = pos3 - event.clientX;
+    //clientY property returns the vertical coordinate of the mouse pointer
+        pos2 = pos4 - event.clientY;
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+    //offsetTop property returns the top position relative to the parent
+        right = `${element.offsetTop - pos2}px`;
+        left = `${element.offsetLeft - pos1}px`;
+        element.style.top = right;
+        element.style.left = left;
+        minimize.style.top = right;
+        minimize.style.left = left;
+      };
+    
+      const dragMouseDown = (event) => {
+        event.preventDefault();
+    
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+    
+        document.onmouseup = dragMouseUp;
+        document.onmousemove = dragMouseMove;
+      };
+    
+      dragzone.onmousedown = dragMouseDown;
+    };
+    
+    const dragElement2 = (element) => {
+      let pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+    //MouseUp occurs when the user releases the mouse button
+      const dragMouseUp2 = () => {
+        document.onmouseup = null;
+    //onmousemove attribute fires when the pointer is moving while it is over an element.
+        document.onmousemove = null;
+      };
+    
+      const dragMouseMove2 = (event) => {
+    
+        event.preventDefault();
+    //clientX property returns the horizontal coordinate of the mouse pointer
+        pos1 = pos3 - event.clientX;
+    //clientY property returns the vertical coordinate of the mouse pointer
+        pos2 = pos4 - event.clientY;
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+    //offsetTop property returns the top position relative to the parent
+        right = `${element.offsetTop - pos2}px`;
+        left = `${element.offsetLeft - pos1}px`;
+        element.style.top = right;
+        element.style.left = left;
+        mainframe.style.top = right;
+        mainframe.style.left = left;
+      };
+    
+      const dragMouseDown2 = (event) => {
+        event.preventDefault();
+    
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+    
+        document.onmouseup = dragMouseUp2;
+        document.onmousemove = dragMouseMove2;
+      };
+    
+      element.onmousedown = dragMouseDown2;
+    };
+    
+    const dragable = main,
+      dragzone = header;
+    dragElement(dragable, dragzone);
+    circle2.onclick = async () => {
+      document.body.appendChild(minimize)
+      minimize.style.display = ""
+      main.style.display = "none"
+      const dragable1 = minimize;
+      dragElement2(dragable1);
     }
 
     btn1.addEventListener("click", function () {
@@ -395,7 +543,7 @@ btn1.onclick = () => {
           load();
       }
       goback.onclick = () => {
-        main.style.display = "none"
+        main.style.display = ""
       }
     
       // main css
@@ -516,8 +664,56 @@ btn1.onclick = () => {
       z-index: 999999 !important;
       font-family: "Open Sans";
       position: absolute !important;
-      left: 300px !important;
-      top: 50px !important;
+      left: ${right}px;
+      top: ${left}px;
+    }
+    #${date}-main[closing] {
+      background-color: black;
+      width: 800px !important;
+      height: 600px !important;
+      border-radius: 10px;
+      animation-name: slidein;
+      animation-duration: 2s;
+      text-align: center;
+      margin: 0px auto;
+      z-index: 999999 !important;
+      font-family: "Open Sans";
+      position: absolute !important;
+      left: ${right}px;
+      top: ${left}px;
+      animation: fade-out 500ms forwards;
+    }
+    
+    #${date}-minimize {
+      width: 50px !important;
+      height: 5px !important;
+      left: ${right}px;
+      top: ${left}px;
+      position: absolute !important;
+    }
+    #${date}-minimize[closing] {
+      width: 50px !important;
+      height: 5px !important;
+      left: ${right}px;
+      top: ${left}px;
+      position: absolute !important;
+        animation: fade-out 500ms forwards;
+    }
+    #${date}-header, #${date}-minimize {
+      border-radius: 10px 10px 0px 0px;
+      padding: 10px;
+      cursor: move;
+      z-index: 10;
+      background-color: #D0D0D0;
+      color: #fff;
+    }
+    #${date}-minimize[closing] {
+      width: 50px !important;
+      height: 5px !important;
+      left: ${right}px;
+      top: ${left}px;
+      position: absolute !important;
+        animation: fade-out 500ms forwards;
     }
     #${date}-jkkldsa, #${date}-author {
       color: white;
@@ -574,6 +770,27 @@ btn1.onclick = () => {
       100% {
         opacity: 0%
       }
+    }
+    .${date}-circleBase {
+      border-radius: 50%;
+      display: inline-block;
+      float: left;
+    }
+    
+    .${date}-circle1, .${date}-circle3 {
+      width: 15px;
+      height: 15px;
+      background: #F20000;
+      border: 1px solid #000;
+      cursor: pointer;
+    }
+    
+    .${date}-circle2, .${date}-circle4 {
+      width: 15px;
+      height: 15px;
+      background: #FFC947;
+      border: 1px solid #000;
+      cursor: pointer;
     }
     #${date}-goback {
       z-index: 999999 !important;
